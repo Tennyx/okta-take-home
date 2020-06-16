@@ -1,38 +1,69 @@
+@import url("https://fonts.googleapis.com/css2?family=Assistant&display=swap");
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+body {
+  background: #222222;
   color: white;
+  font-family: Assistant;
 }
 
-.App-link {
-  color: #61dafb;
+#okta-sign-in.auth-container.main-container[data-se=auth-container] {
+  border-color: #000000;
+  background: #444444;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#okta-sign-in .o-form .o-form-input #okta-signin-username {
+  background: white;
+  color: black;
+}
+
+#okta-sign-in .o-form-input-name-username {
+  border: 0 !important;
+  color: #dddddd;
+}
+
+#okta-sign-in .o-form .o-form-input #okta-signin-password {
+  background: white;
+  color: black;
+}
+
+#okta-sign-in .o-form-input-name-password {
+  border: 0 !important;
+  color: #dddddd;
+}
+
+#okta-sign-in.auth-container .o-form-head {
+  color: #dddddd;
+}
+
+#okta-sign-in.auth-container .button-primary {
+  border:none;
+}
+
+#okta-sign-in.auth-container.main-container .auth-footer {
+  color: #dddddd !important;
+}
+
+#okta-sign-in.auth-container.main-container .auth-header {
+  border-color: #111;
+}
+
+#okta-sign-in .o-form .custom-checkbox label {
+  color: #ddd;
+}
+
+#okta-sign-in .custom-checkbox input {
+  background: #111;
+}
+
+.auth-org-logo {
+  max-height: 90px !important;
+}
+
+.registration-link {
+  color: #ffa142 !important;
 }

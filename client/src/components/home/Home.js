@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { withOktaAuth } from '@okta/okta-react';
+import './home.css'
 
 export default withOktaAuth(class Home extends Component {
 	constructor(props) {
@@ -17,10 +18,6 @@ export default withOktaAuth(class Home extends Component {
 		this.props.authService.logout('/');
 	}
 
-	componentDidMount() {
-
-	}
-
 	render() {
 		if(this.props.authState.isPending){
 			return null
@@ -28,30 +25,16 @@ export default withOktaAuth(class Home extends Component {
 		else {
 			if(this.props.authState.isAuthenticated) {
 				return <Redirect to={{ pathname: '/dashboard' }} />;
-				{/*
-				const token = this.props.authState.idToken;
-				const parsedToken = JSON.parse(atob(token.split('.')[1]));
-				const firstName = parsedToken.name.split(' ')[0];
-				const greeting = 'Welcome to the App, ' + firstName;
-				const button = <button onClick={this.logout}>Logout</button>;
-				return(
-					<div>
-						{greeting}!
-						{button}
-					</div>
-				);
-				*/}
 			}
 			else {
-				const greeting = 'Welcome to the App, login or sign up to get going!';
-				const button = <button onClick={this.login}>Login</button>;
 				return(
-					<div>
-						{/*<Link to='/'>Home</Link><br/>
-						<Link to='/protected'>Protected</Link><br/>*/}
-						{greeting}!
-						{button}
-					</div>
+					<>
+						<div className="logo-wrapper"><img src={process.env.PUBLIC_URL + '/todo.png'} /></div>
+						<div className="home-wrapper">
+							<h1>Welcome to the To-Do list, login to view or modify your list!</h1>
+							<button className="login-button" onClick={this.login}>Login</button>
+						</div>
+					</>
 				);
 			}
 		}

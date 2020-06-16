@@ -1,0 +1,89 @@
+.dashboard-wrapper {
+	text-align: center;
+}
+
+.to-do-wrapper {
+	margin: auto;
+	width: 30%;
+	text-align: left;
+	min-width: 500px;
+}
+
+.to-do-item {
+	padding: 10px;
+	font-size: 20px;
+	background: #444444;
+	border: 0.25px solid #555555;
+}
+
+.add-button {
+	background: #ffa142;
+	border: none;
+	padding: 10px;
+	color: white;
+	width: 100%;
+	margin-top: 20px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.add-button:hover {
+	background: #ffa120;
+}
+
+.delete-button {
+	border: none;
+	padding: 10px;
+	color: white;
+	background: #f53131;
+	float: right;
+	height: 100%;
+	width: 20%;
+	min-width: 100px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.delete-button:hover {
+	background: #f50000;	
+}
+
+.update-button {
+	border: none;
+	padding: 10px;
+	color: white;
+	background: #3cde33;
+	float: right;
+	height: 100%;
+	width: 20%;
+	min-width: 100px;
+	margin-left: 10px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.update-button:hover {
+	background: #00df00;
+}
+
+.btn-wrapper {
+	width: 30%;
+	margin: auto;
+}
+
+.logout {
+	color: white;
+}
+
+.response-code {
+	font-size: 150px;
+	color: #3cde33;
+}
+
+.response-message {
+	font-size: 25px;
+}
+
+.logo-wrapper {
+	text-align: center;
+}

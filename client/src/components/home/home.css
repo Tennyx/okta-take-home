@@ -1,0 +1,22 @@
+.login-button {
+	background: #ffa142;
+	border: none;
+	padding: 10px;
+	color: white;
+	width: 30%;
+	margin-top: 20px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.login-button:hover {
+	background: #ffa120;
+}
+
+.home-wrapper {
+	text-align: center;
+}
+
+.logo-wrapper {
+	text-align: center;
+}

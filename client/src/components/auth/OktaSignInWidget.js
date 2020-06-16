@@ -15,9 +15,9 @@ export default class OktaSignInWidget extends Component {
 			features: {
 				registration: true
 			},
-			logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/600px-JavaScript-logo.png',
+			logo: 'https://i.imgur.com/B8U0Dpj.png',
 			colors: {
-			  brand: '#000000'
+			  brand: '#ffa142'
 			}
 		});
 		this.widget.renderEl({el}, this.props.onSuccess, this.props.onError)
