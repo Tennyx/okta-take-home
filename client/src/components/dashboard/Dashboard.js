@@ -21,15 +21,19 @@ export default withOktaAuth(class Dashboard extends Component {
 	}
 
 	getData() {
-		const token = this.props.authState.idToken;
-		const parsedToken = JSON.parse(atob(token.split('.')[1]));
+		const accessToken = this.props.authState.accessToken
+		const idToken = this.props.authState.idToken;
+		const parsedToken = JSON.parse(atob(idToken.split('.')[1]));
 		const userFirstName = parsedToken.name.split(' ')[0];
 		const userId = parsedToken.sub;
 
 		const url = '/api/v1/tasks';
+		const config = {
+			headers: { 'Authorization' : `Bearer ${accessToken}`}
+		};
 		
 		axios.
-		get(url)
+		get(url, config)
 		.then((res) => {
 			const userData = res.data.find(element => element.id == userId);
 			this.setState({
@@ -48,7 +52,6 @@ export default withOktaAuth(class Dashboard extends Component {
 	}
 
 	render() {
-		console.log(this.state);
 		const greeting = 'Welcome to the App, ' + this.state.userFirstName;
 		return(
 			<div>
