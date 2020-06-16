@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import { Security, SecureRoute, LoginCallback } from '@okta/okta-react';
 import Home from '../home/Home';
+import Dashboard from '../dashboard/Dashboard';
 import Login from './Login';
 import Protected from './Protected';
 
@@ -23,6 +24,7 @@ export default withRouter(class AppWithRouterAccess extends Component {
 			onAuthRequired={this.onAuthRequired}
 			pkce={true}>
 				<Route path='/' exact={true} component={Home} />
+				<SecureRoute path='/dashboard' exact={true} component={Dashboard} />
 				<SecureRoute path='/protected' component={Protected} />
 				<Route path='/login' render={() => <Login baseUrl='https://dev-477362.okta.com' />} />
 				<Route path='/implicit/callback' component={LoginCallback} />

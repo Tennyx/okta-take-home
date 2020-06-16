@@ -8,7 +8,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/api/v1/tasks', (req, res) => {
-  res.send({ express: 'Hello From Express' });
+  res.send([ 
+  	{ id: '00ufakijkfkZpYVn84x6', tasks: ['Do dishes', 'Do laundry', 'Pickup groceries']},
+  	{ id: '00ufcx1vkG8gMH3Z84x6', tasks: ['Take car to mechanic', 'Make lunch for kids', 'Pickup kids from school']} 
+  ]);
 });
 
 app.post('/api/v1/tasks', (req, res) => {

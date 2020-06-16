@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import OktaSignInWidget from './OktaSignInWidget';
 import { withOktaAuth } from '@okta/okta-react';
+import './signInWidgetStyle.css';
 
 export default withOktaAuth(class Login extends Component {
 	constructor(props) {
@@ -46,7 +47,7 @@ export default withOktaAuth(class Login extends Component {
 		console.log(this.props);
 		if(this.state.authenticated === null) return null;
 		return this.state.authenticated ?
-			<Redirect to={{ pathname: '/' }} /> :
+			<Redirect to={{ pathname: '/dashboard' }} /> :
 			<OktaSignInWidget
 				baseUrl={this.props.baseUrl}
 				onSuccess={this.onSuccess}
