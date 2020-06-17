@@ -46,6 +46,7 @@ export default withOktaAuth(class Dashboard extends Component {
 		get(this.url, config)
 		.then((res) => {
 			console.log(res);
+			console.log(userId);
 			const userData = res.data.find(element => element.id == userId);
 			this.setState({
 				tasks : userData.tasks,
