@@ -28,13 +28,13 @@ export default withOktaAuth(class Dashboard extends Component {
 
 	async logout () {
 		this.props.authService.logout('/');
+		//add functionality to clear cookies
 	}
 
 	getData() {
 		const accessToken = this.props.authState.accessToken
 		const idToken = this.props.authState.idToken;
 		const parsedToken = JSON.parse(atob(idToken.split('.')[1]));
-		console.log(parsedToken);
 		const userFirstName = parsedToken.name.split(' ')[0];
 		const userId = parsedToken.sub;
 
@@ -45,8 +45,7 @@ export default withOktaAuth(class Dashboard extends Component {
 		axios.
 		get(this.url, config)
 		.then((res) => {
-			console.log(res);
-			console.log(userId);
+			console.log('okta ID token:', userId);
 			const userData = res.data.find(element => element.id == userId);
 			this.setState({
 				tasks : userData.tasks,
@@ -64,7 +63,6 @@ export default withOktaAuth(class Dashboard extends Component {
 	}
 
 	addTask() {
-		console.log(this.state.accessToken);
 		const config = {
 			headers: { 'Authorization' : `Bearer ${this.state.accessToken}`}
 		};
@@ -72,14 +70,16 @@ export default withOktaAuth(class Dashboard extends Component {
 		axios.
 		post(this.url, {'dummyData' : 'dummyData'}, config)
 		.then((res) => {
-			console.log(res);
 			this.setState({
 				responseCode : res.data.status,
 				responseMessage : res.data.message
 			});
 		})
 		.catch((error) => {
-			console.log(error);
+			this.setState({
+				responseCode : error.response.status,
+				responseMessage : error.response.data
+			});
 		});	
 	}
 
@@ -91,14 +91,16 @@ export default withOktaAuth(class Dashboard extends Component {
 		axios.
 		put(this.url, {'dummyData' : 'dummyData'}, config)
 		.then((res) => {
-			console.log(res);
 			this.setState({
 				responseCode : res.data.status,
 				responseMessage : res.data.message
 			});
 		})
 		.catch((error) => {
-			console.log(error);
+			this.setState({
+				responseCode : error.response.status,
+				responseMessage : error.response.data
+			});
 		});	
 	}
 
@@ -112,14 +114,16 @@ export default withOktaAuth(class Dashboard extends Component {
 		axios.
 		delete(this.url, config)
 		.then((res) => {
-			console.log(res);
 			this.setState({
 				responseCode : res.data.status,
 				responseMessage : res.data.message
 			});
 		})
 		.catch((error) => {
-			console.log(error);
+			this.setState({
+				responseCode : error.response.status,
+				responseMessage : error.response.data
+			});
 		});	
 	}
 

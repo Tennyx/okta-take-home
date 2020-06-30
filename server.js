@@ -7,10 +7,10 @@ const oktaJwtVerifier = new OktaJwtVerifier({
 });
 
 let taskData = [ 
-			{ id: '00ufakijkfkZpYVn84x6', tasks: ['Do dishes', 'Do laundry', 'Pickup groceries']},
-			{ id: '00ufcx1vkG8gMH3Z84x6', tasks: ['Take car to mechanic', 'Make lunch for kids', 'Pickup kids from school']},
-			{ id: '00ufdceycg6PvBhCO4x6', tasks: ['Take car to mechanic', 'Make lunch for kids', 'Pickup kids from school']},
-			{ id: '00ufmznxng8j8eAYX4x6', tasks: ['Take car to mechanic', 'Make lunch for kids', 'Pickup kids from school']}  
+			{ id: '00ufakijkfkZpYVn84x6', tasks: ['Do dishes', 'Do laundry', 'Pickup groceries']}, 									// Cale Switzer Data
+			{ id: '00ufw2jk0qSw4iaeg4x6', tasks: ['Take car to mechanic', 'Make lunch for kids', 'Pickup kids from school']}, 		// A Data
+			{ id: '00ufwas70nzvRlvUU4x6', tasks: ['Go to gym', 'Pickup groceries', 'Pay bills']}, 									// B Data
+			{ id: '00ufwbme0dXa3oGTs4x6', tasks: ['Yoga class', 'Do taxes', 'Clean basement']}  									// C Data
 		];
 
 const app = express();
@@ -25,10 +25,10 @@ function authorizeUser(req, res, resData, requiresAdmin) {
 	oktaJwtVerifier.verifyAccessToken(accessTokenString, 'api://default')
 	.then(jwt => {
 		if(requiresAdmin){
-			console.log(jwt);
 			jwt.claims.is_admin ? 
 			res.send(resData) :
-			res.send({status : 401, message: 'Unauthorized'})
+			res.status(401);
+			res.send('Unauthorized')
 		}
 		else {
 			res.send(resData);
@@ -45,7 +45,7 @@ app.get('/api/v1/tasks', (req, res) => {
 });
 
 app.post('/api/v1/tasks', (req, res) => {
-	authorizeUser(req, res, {status : 201, message: 'POST verified, task created'}, true);
+	authorizeUser(req, res, {status : 200, message: 'POST verified, task created'}, true);
 });
 
 app.put('/api/v1/tasks', (req, res) => {
